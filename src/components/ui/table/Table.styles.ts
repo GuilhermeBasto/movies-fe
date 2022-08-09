@@ -36,3 +36,12 @@ export const BodyTD = styled.td`
   padding: 12px 0;
   align-items: center;
 `;
+
+export const EmptyText = styled.p`
+  margin: 8px 0;
+  font-size: 16px;
+  text-align: left;
+  line-height: 20px;
+  letter-spacing: 0;
+  color: ${colors.grey};
+`;

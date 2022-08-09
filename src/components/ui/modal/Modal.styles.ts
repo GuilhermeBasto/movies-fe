@@ -29,10 +29,10 @@ export const StyledModal = styled.div`
   margin: auto;
   padding: 17px 58px;
   width: 748px;
+  box-shadow: 0px 12px 24px ${colors.black1};
 `;
 
 export const Header = styled.div`
-  border-radius: 8px 8px 0 0;
   display: flex;
   justify-content: space-between;
   padding: 0.3rem;
@@ -41,7 +41,7 @@ export const Header = styled.div`
 export const HeaderText = styled.div`
   color: ${colors.darkBlue1};
   font-size: 32px;
-  font-weight: ${weight.light};
+  font-weight: ${weight.regular};
 `;
 
 export const CloseButton = styled.div`

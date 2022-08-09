@@ -1,6 +1,13 @@
 import { FC } from "react";
 import { ListResponse } from "../../../state/base-responses";
-import { BodyTD, HeaderTH, HeaderTR, TableElement, TR } from "./Table.styles";
+import {
+  BodyTD,
+  EmptyText,
+  HeaderTH,
+  HeaderTR,
+  TableElement,
+  TR,
+} from "./Table.styles";
 import { TableColumns } from "./types";
 
 interface Props {
@@ -30,6 +37,7 @@ const Table: FC<Props> = ({ columns, data }) => {
             ))}
         </tbody>
       </TableElement>
+      {!data?.content?.length && <EmptyText>No data</EmptyText>}
     </>
   );
 };
