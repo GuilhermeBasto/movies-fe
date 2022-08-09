@@ -1,18 +1,17 @@
 import { useCallback, useEffect, useState } from "react";
-import Reset from "../../../components/icons/Reset";
-import Button from "../../../components/ui/button/Button";
-import { Title } from "../../../components/ui/title/Title.styles";
-import YearPick from "../../../components/ui/year-pick/YearPick";
 import useMovies from "../../../hooks/api/useMovies";
 import useYearPick from "../../../hooks/custom/useYearPick";
-import { FlexDiv } from "../Dashboard.styles";
+import { FlexDiv } from "../../../pages/dashboard/Dashboard.styles";
+import Reset from "../../icons/Reset";
+import Button from "../button/Button";
+import YearPick from "../year-pick/YearPick";
 
 export enum ActiveTop {
   TOP_10 = "TOP_10",
   TOP_10_PER_YEAR = "TOP_10_PER_YEAR",
 }
 
-const DashboardHeader = () => {
+const Top10Buttons = () => {
   const [activeTop, setActiveTop] = useState<ActiveTop>();
   const { listMovies } = useMovies();
 
@@ -46,7 +45,6 @@ const DashboardHeader = () => {
 
   return (
     <>
-      <Title>Movie ranking</Title>
       <FlexDiv>
         <Button
           marginRight={23}
@@ -76,4 +74,4 @@ const DashboardHeader = () => {
   );
 };
 
-export default DashboardHeader;
+export default Top10Buttons;

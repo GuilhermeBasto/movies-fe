@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import styled from "styled-components";
-import Eye from "../../../components/icons/Eye";
-import Table from "../../../components/ui/table/Table";
-import { TableColumns } from "../../../components/ui/table/types";
 import useMovies from "../../../hooks/api/useMovies";
 import { Movie } from "../../../state/movies/movie";
+import { currencyFormatter } from "../../../utils/currencyFormatter";
+import Eye from "../../icons/Eye";
+import Table from "../table/Table";
+import { TableColumns } from "../table/types";
 
 const Icon = styled.span`
   cursor: pointer;
@@ -40,11 +41,6 @@ const MoviesTable = ({ onDetails }: Props) => {
     []
   );
 
-  const handleRevenue = useCallback(
-    (value: string | number) => (!!value ? `$${value}` : "-"),
-    []
-  );
-
   const handleDetails = useCallback(
     (id: string) => {
       getDetailedMovie(id);
@@ -73,7 +69,9 @@ const MoviesTable = ({ onDetails }: Props) => {
     },
     {
       title: "REVENUE",
-      render: (record: Movie) => <span>{handleRevenue(record.revenue)}</span>,
+      render: (record: Movie) => (
+        <span>{handleNullValue(currencyFormatter(record.revenue))}</span>
+      ),
     },
     {
       title: "",

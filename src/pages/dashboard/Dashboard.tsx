@@ -1,10 +1,11 @@
 import { StyledLayout } from "../../components/ui/layout/Layout";
 import Modal from "../../components/ui/modal/Modal";
+import DetailsModal from "../../components/ui/movie-details-modal/MovieDetailsModal";
+import MoviesTable from "../../components/ui/movies-table/MoviesTable";
+import Top10Buttons from "../../components/ui/top-10-buttons/Top10Buttons";
 import useMovies from "../../hooks/api/useMovies";
 import useModal from "../../hooks/custom/useModal";
-import DashboardHeader from "./components/DashboardHeader";
-import DetailsModal from "./components/DetailsModal";
-import MoviesTable from "./components/MoviesTable";
+import { Title } from "./Dashboard.styles";
 
 const Dashboard = () => {
   const { detailedMovie } = useMovies();
@@ -12,7 +13,8 @@ const Dashboard = () => {
 
   return (
     <StyledLayout>
-      <DashboardHeader />
+      <Title>Movie ranking</Title>
+      <Top10Buttons />
       <MoviesTable onDetails={() => toggle()} />
       <Modal
         isShown={isShown}

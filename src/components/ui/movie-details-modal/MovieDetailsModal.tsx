@@ -1,13 +1,14 @@
 import styled from "styled-components";
-import LabelValue from "../../../components/ui/label-value/LabelValue";
 import useMovies from "../../../hooks/api/useMovies";
+import { currencyFormatter } from "../../../utils/currencyFormatter";
+import LabelValue from "../label-value/LabelValue";
 
 const FlexDiv = styled.div`
   display: flex;
   margin-bottom: 17px;
 `;
 
-const DetailsModal = () => {
+const MovieDetailsModel = () => {
   const { detailedMovie } = useMovies();
 
   return (
@@ -57,7 +58,7 @@ const DetailsModal = () => {
 
       <LabelValue
         label="Revenue"
-        value={detailedMovie?.revenue}
+        value={currencyFormatter(detailedMovie?.revenue ?? 0)}
         marginBottom={17}
       />
 
@@ -66,4 +67,4 @@ const DetailsModal = () => {
   );
 };
 
-export default DetailsModal;
+export default MovieDetailsModel;
