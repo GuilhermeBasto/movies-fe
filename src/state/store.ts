@@ -1,25 +1,19 @@
-import { applyMiddleware, combineReducers, createStore, Reducer } from "redux";
-import thunkMiddleware from "redux-thunk";
-import logger from "../config/logger";
-import movies, { moviesInitialState, MoviesState } from "./movies/reducers";
+import { configureStore } from "@reduxjs/toolkit";
+import logger from "redux-logger";
+import movies, { moviesInitialState } from "./movies/reducers";
 
-interface ApplicationState {
-  movies: MoviesState;
-}
-
-const reducers: Reducer<ApplicationState> = combineReducers<ApplicationState>({
-  movies,
-});
-
-// TODO: Replace this deprecated method
-const configureStore = () => {
-  const middlewareEnhancer = applyMiddleware(...[logger, thunkMiddleware]);
-  const initialState: ApplicationState = {
-    movies: moviesInitialState,
-  };
-  return createStore(reducers, initialState, middlewareEnhancer);
+const configureReduxStore = () => {
+  return configureStore({
+    reducer: {
+      movies: movies,
+    },
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+    preloadedState: {
+      movies: moviesInitialState,
+    },
+  });
 };
 
-export const store = configureStore();
+export const store = configureReduxStore();
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;

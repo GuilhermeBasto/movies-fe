@@ -2,6 +2,7 @@ import { useCallback, useEffect } from "react";
 import ReactDOM from "react-dom";
 import FocusLock from "react-focus-lock";
 import Close from "../../icons/Close";
+import Line from "../../icons/Line";
 
 import {
   Backdrop,
@@ -48,7 +49,10 @@ const Modal = ({ isShown, hide, modalContent, headerText }: ModalProps) => {
         <Wrapper aria-modal aria-labelledby={headerText} tabIndex={-1}>
           <StyledModal>
             <Header>
-              <HeaderText>{headerText}</HeaderText>
+              <div>
+                <HeaderText>{headerText}</HeaderText>
+                <Line />
+              </div>
               <CloseButton onClick={hide}>
                 <Close />
                 <CloseButtonText>close</CloseButtonText>

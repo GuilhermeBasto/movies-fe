@@ -8,7 +8,7 @@ import useModal from "../../hooks/custom/useModal";
 import { Title } from "./Dashboard.styles";
 
 const Dashboard = () => {
-  const { detailedMovie } = useMovies();
+  const { detailedMovie, isLoading } = useMovies();
   const { isShown, toggle } = useModal();
 
   return (
@@ -16,12 +16,14 @@ const Dashboard = () => {
       <Title>Movie ranking</Title>
       <Top10Buttons />
       <MoviesTable onDetails={() => toggle()} />
-      <Modal
-        isShown={isShown}
-        hide={toggle}
-        headerText={detailedMovie?.title}
-        modalContent={<DetailsModal />}
-      />
+      {!isLoading && (
+        <Modal
+          isShown={isShown}
+          hide={toggle}
+          headerText={detailedMovie?.title}
+          modalContent={<DetailsModal />}
+        />
+      )}
     </StyledLayout>
   );
 };
