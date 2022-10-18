@@ -1,6 +1,6 @@
-# Xpand IT Frontend Challenge
+# Movies
 
-This repository contains the React frontend application for Xpand IT Frontend Challenge
+This repository contains the React frontend application for Movies
 
 ## Setup
 
